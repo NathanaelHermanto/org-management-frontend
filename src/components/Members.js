@@ -1,7 +1,5 @@
-// MemberList.js
-
 import React, { useEffect, useState } from "react";
-import { getMembers, searchMembersByName } from "../services/api"; // Adjust the import path based on your file structure
+import { getMembers, searchMembersByName } from "../services/api"; 
 import {
   Box,
   TextField,
@@ -14,7 +12,9 @@ import {
   TablePagination,
   Paper,
   Typography,
+  Button,
 } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const MemberList = () => {
   const [members, setMembers] = useState([]);
@@ -99,6 +99,7 @@ const MemberList = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Position</TableCell>
+              <TableCell>Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -106,6 +107,11 @@ const MemberList = () => {
               <TableRow key={member.id}>
                 <TableCell>{member.name}</TableCell>
                 <TableCell>{member.position}</TableCell>
+                <TableCell>
+                <Button component={Link} to={`/member/${member.id}`} variant="outlined">
+                  View
+                </Button>
+              </TableCell>
               </TableRow>
             ))}
           </TableBody>
