@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMembers, searchMembersByName } from "../services/api"; 
+import { getMembers, searchMembersByName } from "../services/api";
 import {
   Box,
   TextField,
@@ -14,7 +14,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const MemberList = () => {
   const [members, setMembers] = useState([]);
@@ -55,7 +55,7 @@ const MemberList = () => {
   };
 
   useEffect(() => {
-      fetchMembers();
+    fetchMembers();
   }, []);
 
   const handleSearchChange = (event) => {
@@ -71,7 +71,7 @@ const MemberList = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (searchQuery && searchQuery.trim() !== "") {
-        console.log("searching member by name")
+        console.log("searching member by name");
         fetchMembersByName();
       } else {
         fetchMembers();
@@ -89,8 +89,8 @@ const MemberList = () => {
         variant="outlined"
         fullWidth
         margin="normal"
-        value={searchQuery} 
-        onChange={handleSearchChange} 
+        value={searchQuery}
+        onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
       />
       <TableContainer component={Paper}>
@@ -108,10 +108,14 @@ const MemberList = () => {
                 <TableCell>{member.name}</TableCell>
                 <TableCell>{member.position}</TableCell>
                 <TableCell>
-                <Button component={Link} to={`/member/${member.id}`} variant="outlined">
-                  View
-                </Button>
-              </TableCell>
+                  <Button
+                    component={Link}
+                    to={`/member/${member.id}`}
+                    variant="outlined"
+                  >
+                    View
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -126,6 +130,10 @@ const MemberList = () => {
         onPageChange={(event, newPage) => setPage(newPage)}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+
+      <Button component={Link} to={`/add-member`} variant="outlined" >
+        Add New Member
+      </Button>
     </Box>
   );
 };

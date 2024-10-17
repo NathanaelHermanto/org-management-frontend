@@ -26,5 +26,13 @@ export const searchMembersByName = async (params) => {
     }
 };
   
-export const addMember = (member) => axios.post(`${API_URL}/members`, member);
+export const addMember = async (member) => {
+    const response = await axios.post(`${API_URL}/members`, member, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    return response.data;
+};
+
 export const getMemberDetail = (id) => axios.get(`${API_URL}/members/${id}`);
