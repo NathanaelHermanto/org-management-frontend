@@ -49,6 +49,7 @@ const MemberDetail = () => {
           <Typography variant="h4">{member.name}</Typography>
         </Box>
         <Typography variant="h6">Position: {member.position}</Typography>
+        <Typography variant="h6">Manager: {member.manager? member.manager.name: '-'}</Typography>
       </Paper>
     </Container>
   );
